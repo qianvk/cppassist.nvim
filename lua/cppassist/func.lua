@@ -282,6 +282,22 @@ end
 
 function M.GetClassName()
 	local class = fn.search("\\Cclass", "bn", 1)
+	if class == 0 then
+		return ""
+	end
+	while (class > 0)
+	do
+		line_str = fn.getline(class)
+		local friend_key = string.find(line_str, "friend")
+		if friend_key == nil then
+			break
+		else
+			class = class - 1
+		end
+	end
+	if class == 0 then
+		return ""
+	end
 	if class ~= 1 then
 		local template = class - 1
 		templatestr = fn.getline(template)
