@@ -293,7 +293,7 @@ function M.GetClassName()
 	end
 	class = fn.getline(class)
 	if string.len(class) > 0 then
-		class = fn.matchlist(class, "class\\s\\+\\([a-zA-Z_]\\+\\)")[1]
+		class = fn.matchlist(class, "class\\s\\+\\([a-zA-Z_][a-zA-Z0-9_]*\\)")[1]
 		class = string.gsub(class, "^class%s+", "", 1)
 		return class
 	else
